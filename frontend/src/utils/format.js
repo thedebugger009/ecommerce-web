@@ -1,0 +1,3 @@
+export const money = value => new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(value)
+export const demoCoupons={FRESH50:{amount:50,minSubtotal:499,label:'₹50 off orders above ₹499'},NEST10:{percent:10,minSubtotal:799,maxDiscount:100,label:'10% off up to ₹100 on orders above ₹799'}}
+export const cartTotals=(items,code='')=>{const subtotal=items.reduce((sum,x)=>sum+x.qty*x.variant[1],0);const delivery=subtotal===0||subtotal>=799?0:49;const coupon=demoCoupons[code?.toUpperCase()];let discount=0;if(coupon&&subtotal>=coupon.minSubtotal)discount=coupon.amount||Math.min(Math.round(subtotal*coupon.percent/100),coupon.maxDiscount);return {subtotal,delivery,discount,total:Math.max(0,subtotal+delivery-discount),coupon}}
