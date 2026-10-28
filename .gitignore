@@ -1,0 +1,12 @@
+# Dependencies and generated output
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.vscode/
+*.log
